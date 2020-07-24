@@ -2,9 +2,9 @@
 
 > more advance password meater 
 
-[![NPM](https://img.shields.io/npm/v/password-meter.svg)](https://www.npmjs.com/package/password-meter) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/password-meter.svg)](https://www.npmjs.com/package/password-meter) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)![Deployment](https://github.com/nadeeraka/react-password-meter/workflows/Deployment/badge.svg)
 
-![Deployment](https://github.com/nadeeraka/react-password-meter/workflows/Deployment/badge.svg)
+
 
 ## Install
 
