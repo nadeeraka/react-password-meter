@@ -30,6 +30,8 @@ export class Main {
     return this.score
   }
 
+  //  move to util
+  
   validate(arg: string) {
     if (arg) {
       return true
