@@ -1,6 +1,6 @@
 ## Still under maintenance
 
-# password-meter
+# react-password-meter
 
 > more advance password meater
 
@@ -23,16 +23,8 @@ npm install --save password-meter
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+under maintenance
 
-import MyComponent from 'password-meter'
-import 'password-meter/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
 ```
 
 ## License
