@@ -1,4 +1,5 @@
 const commonChecks = require('fxa-common-password-list')
+import {errorsObj,strength} from '../util/const'
 import {
   checkBasicPattern,
   hasNumber,
@@ -61,7 +62,10 @@ export class Main {
     if (validate(arg)) {
       this.getPasswordLength(arg)
       return this.getScore()
+    }else{
+      this.setError(errorsObj.short)
     }
+  
     return -1
   }
   basic(arg: string): number {
