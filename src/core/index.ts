@@ -1,4 +1,3 @@
-import { regex } from '../util/const'
 const commonChecks = require('fxa-common-password-list')
 import {
   checkBasicPattern,

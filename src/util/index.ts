@@ -26,6 +26,10 @@ export const hasNumber = (arg: string) => {
       count++
     }
   }
+  //   too much numbers
+  if (count > array.length / 2) {
+    return -1
+  }
   if (count > 3) {
     return 2
   } else if (count > 0) {
