@@ -1,21 +1,20 @@
 import { regex } from './const'
 
-export const validate = (arg: string):boolean => {
-  if (arg) {
+export const validate = (arg: string) => {
+  if (arg && !/\s/.test(arg)) {
+    // It has any kind of whitespace
+
     return true
   }
-  if (/\s/.test(arg)) {
-    // It has any kind of whitespace
-    return false
-  }
+
   return false
 }
 
-export const hasLowerCase = (arg: string) => {
-  return validate(arg) && /[a-z]/.test(arg) && 1
+export const hasLowerCase = (arg: string): number | boolean => {
+  return validate(arg) ? /[a-z]/.test(arg) && 1 : false
 }
-export const hasUpperCase = (arg: string) => {
-  return validate(arg) && /[A-Z]/.test(arg) && 1
+export const hasUpperCase = (arg: string): number | boolean => {
+  return validate(arg) ? /[A-Z]/.test(arg) && 1 : false
 }
 
 export const hasSpecialChar = (arg: string): number | boolean => {
