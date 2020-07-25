@@ -37,6 +37,7 @@ export const hasNumber = (arg: string) => {
   }
   return -1
 }
+
 export const checkBasicPattern = () => {
   // ..
 }
