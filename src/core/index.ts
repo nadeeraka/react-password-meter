@@ -15,7 +15,7 @@ export class Main {
   score: number = 0
   errors: [string]
 
-  constructor(input: string) {
+  constructor(input?:any) {
     this.input = input
   }
 
