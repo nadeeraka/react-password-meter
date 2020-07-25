@@ -4,7 +4,8 @@ import {
   hasNumber,
   hasSpecialChar,
   validate,
-  convertToArray
+  convertToArray,
+  basicPasswordLength
 } from '../util'
 export class Main {
   input: string
@@ -34,34 +35,30 @@ export class Main {
 
   //  move to util
 
-  hasSpecialChar(arg: string) {
+  hasSpecialChar(arg: string): void {
     const scor = hasSpecialChar(arg)
-    return this.setScore(scor)
+    this.setScore(scor)
   }
 
   // make this function to do all the checking things
-  hasNumber(arg: string) {
+  hasNumber(arg: string): void {
     const scor = hasNumber(arg)
-    return this.setScore(scor)
+    this.setScore(scor)
   }
 
   //  main methods
-  basicPasswordLength(arg: string) {
-    if (convertToArray(arg).length > 6) {
-      return this.setScore(1)
-    } else if (convertToArray(arg).length > 8) {
-      return this.setScore(2)
-    }
-    return this.setScore(-1)
+  basicPasswordLength(arg: string): void {
+    const scor = basicPasswordLength(arg)
+    this.setScore(scor)
   }
-  simple(arg: string) {
+  simple(arg: string): number {
     if (validate(arg)) {
       this.basicPasswordLength(arg)
       return this.getScore()
     }
     return -1
   }
-  advance(arg: string, email: string, name: string) {
+  advance(arg: string, email: string, name: string): number {
     this.basic(arg)
     // check common or not
     if (commonChecks(arg)) {
@@ -82,7 +79,7 @@ export class Main {
     return this.getScore()
   }
 
-  basic(arg: string) {
+  basic(arg: string): number {
     if (validate(arg)) {
       return -1
     }

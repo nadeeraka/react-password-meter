@@ -40,3 +40,12 @@ export const hasNumber = (arg: string) => {
 export const checkBasicPattern = () => {
   // ..
 }
+
+export const basicPasswordLength = (arg: string) => {
+  if (convertToArray(arg).length > 6) {
+    return 1
+  } else if (convertToArray(arg).length > 8) {
+    return 2
+  }
+  return -1
+}
