@@ -12,12 +12,11 @@ export const validate = (arg: string) => {
 }
 
 export const hasLowerCase = (arg: string) => {
-  return /[a-z]/.test(arg)
+  return validate(arg) && /[a-z]/.test(arg) && 1
 }
 export const hasUpperCase = (arg: string) => {
-  return /[A-Z]/.test(arg)
+  return validate(arg) && /[A-Z]/.test(arg) && 1
 }
-
 
 export const hasSpecialChar = (arg: string) => {
   if (arg.search(regex) > 0) {
@@ -35,13 +34,13 @@ export const hasNumber = (arg: string) => {
   let count: number = 0
   const array = convertToArray(arg)
   for (let i = 0; i < array.length; i++) {
-    const element:any = array[i]
-    if (! isNaN(element)) {
+    const element: any = array[i]
+    if (!isNaN(element)) {
       count++
     }
   }
-    // too much numbers
-  if (count > (array.length / 2)+2) {
+  // too much numbers
+  if (count > array.length / 2 + 2) {
     return -1
   }
   if (count > 3) {
