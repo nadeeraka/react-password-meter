@@ -46,18 +46,19 @@ export class Main {
     this.setScore(scor)
   }
 
-  //  main methods
-  basicPasswordLength(arg: string): void {
+  
+  getPasswordLength(arg: string): void {
     const scor = basicPasswordLength(arg)
     this.setScore(scor)
   }
   simple(arg: string): number {
     if (validate(arg)) {
-      this.basicPasswordLength(arg)
+      this.getPasswordLength(arg)
       return this.getScore()
     }
     return -1
   }
+  //  improve this method  
   advance(arg: string, email: string, name: string): number {
     this.basic(arg)
     // check common or not
@@ -83,7 +84,7 @@ export class Main {
     if (validate(arg)) {
       return -1
     }
-    this.basicPasswordLength(arg)
+    this.getPasswordLength(arg)
     this.hasNumber(arg)
     this.hasSpecialChar(arg)
     return this.getScore()
