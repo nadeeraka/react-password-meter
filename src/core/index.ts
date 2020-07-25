@@ -12,6 +12,7 @@ import {
 export class Main {
   input: string
   score: number = 0
+  errors: [string]
 
   constructor(input: string) {
     this.input = input
@@ -21,8 +22,8 @@ export class Main {
     this.input = x
   }
 
-  private setScore(plus: number): number {
-    if (plus > 0) {
+  private setScore(plus: any): number {
+    if (!isNaN(plus) && plus > 0) {
       this.score + plus
     }
     if (this.score > 0 && this.score > plus) {
@@ -34,24 +35,27 @@ export class Main {
   private getScore(): number {
     return this.score
   }
+  private setError(arg: string): void {
+    this.errors.push(arg)
+  }
+
+  private getError(): [] | [string] {
+    return this.errors
+  }
 
   //  move to util
 
   hasSpecialChar(arg: string): void {
-    const scor = hasSpecialChar(arg)
-    this.setScore(scor)
+    this.setScore(hasSpecialChar(arg))
   }
 
   // make this function to do all the checking things
   hasNumber(arg: string): void {
-    const scor = hasNumber(arg)
-    this.setScore(scor)
+    this.setScore(hasNumber(arg))
   }
 
-  
   getPasswordLength(arg: string): void {
-    const scor = basicPasswordLength(arg)
-    this.setScore(scor)
+    this.setScore(basicPasswordLength(arg))
   }
   simple(arg: string): number {
     if (validate(arg)) {
@@ -72,7 +76,7 @@ export class Main {
     return this.getScore()
   }
 
-  //  improve this method  
+  //  improve this method
   advance(arg: string, email: string, name: string): number {
     this.basic(arg)
     // check common or not
@@ -93,6 +97,4 @@ export class Main {
 
     return this.getScore()
   }
-
-  
 }
