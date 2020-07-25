@@ -1,12 +1,15 @@
-import { regex } from '../util/const'
 const commonChecks = require('fxa-common-password-list')
+import {
+  checkBasicPattern,
+  hasNumber,
+  hasSpecialChar,
+  validate,
+  convertToArray,
+  basicPasswordLength
+} from '../util'
 export class Main {
   input: string
   score: number = 0
-  // basic password length  p >6 = 1
-  // specal keys =1
-  // numbers = 1
-  // comman password = -1
 
   constructor(input: string) {
     this.input = input
@@ -31,62 +34,31 @@ export class Main {
   }
 
   //  move to util
-  
-  validate(arg: string) {
-    if (arg) {
-      return true
-    }
-    return false
+
+  hasSpecialChar(arg: string): void {
+    const scor = hasSpecialChar(arg)
+    this.setScore(scor)
   }
-  hasSpecialChar(arg: string) {
-    if (arg.search(regex) > 0) {
-      return this.setScore(1)
-    } else if (arg.search(regex) > 2) {
-      return this.setScore(2)
-    }
-    return this.setScore(-1)
-  }
-  convertToArray(arg: string) {
-    return arg.split('')
-  }
+
   // make this function to do all the checking things
-  hasNumber(arg: string) {
-    let count: number = 0
-    const array = this.convertToArray(arg)
-    for (let i = 0; i < array.length; i++) {
-      const element = array[i]
-      if (typeof parseInt(element) === 'number') {
-        count++
-      }
-    }
-    if (count > 3) {
-      return this.setScore(2)
-    } else if (count > 0) {
-      return this.setScore(1)
-    }
-    return this.setScore(-1)
-  }
-  checkBasicPattern() {
-    // ..
+  hasNumber(arg: string): void {
+    const scor = hasNumber(arg)
+    this.setScore(scor)
   }
 
   //  main methods
-  basicPasswordLength(arg: string) {
-    if (this.convertToArray(arg).length > 6) {
-      return this.setScore(1)
-    } else if (this.convertToArray(arg).length > 8) {
-      return this.setScore(2)
-    }
-    return this.setScore(-1)
+  basicPasswordLength(arg: string): void {
+    const scor = basicPasswordLength(arg)
+    this.setScore(scor)
   }
-  simple(arg: string) {
-    if (this.validate(arg)) {
+  simple(arg: string): number {
+    if (validate(arg)) {
       this.basicPasswordLength(arg)
       return this.getScore()
     }
     return -1
   }
-  advance(arg: string, email: string, name: string) {
+  advance(arg: string, email: string, name: string): number {
     this.basic(arg)
     // check common or not
     if (commonChecks(arg)) {
@@ -96,8 +68,8 @@ export class Main {
     }
     // check using details
     if (
-      this.convertToArray(arg).includes(email) ||
-      this.convertToArray(arg).includes(name)
+      convertToArray(arg).includes(email) ||
+      convertToArray(arg).includes(name)
     ) {
       this.setScore(-1)
     }
@@ -107,8 +79,8 @@ export class Main {
     return this.getScore()
   }
 
-  basic(arg: string) {
-    if (!this.validate(arg)) {
+  basic(arg: string): number {
+    if (validate(arg)) {
       return -1
     }
     this.basicPasswordLength(arg)
