@@ -1,6 +1,6 @@
 import { regex } from './const'
 
-export const validate = (arg: string) => {
+export const validate = (arg: string):boolean => {
   if (arg) {
     return true
   }
@@ -12,37 +12,36 @@ export const validate = (arg: string) => {
 }
 
 export const hasLowerCase = (arg: string) => {
-  return /[a-z]/.test(arg)
+  return validate(arg) && /[a-z]/.test(arg) && 1
 }
 export const hasUpperCase = (arg: string) => {
-  return /[A-Z]/.test(arg)
+  return validate(arg) && /[A-Z]/.test(arg) && 1
 }
 
-
-export const hasSpecialChar = (arg: string) => {
+export const hasSpecialChar = (arg: string): number | boolean => {
   if (arg.search(regex) > 0) {
     return 1
   } else if (arg.search(regex) > 2) {
     return 2
   }
-  return -1
+  return false
 }
 export const convertToArray = (arg: string) => {
   return arg.split('')
 }
 // make this function to do all the checking things
-export const hasNumber = (arg: string) => {
+export const hasNumber = (arg: string): number | boolean => {
   let count: number = 0
   const array = convertToArray(arg)
   for (let i = 0; i < array.length; i++) {
-    const element:any = array[i]
-    if (! isNaN(element)) {
+    const element: any = array[i]
+    if (!isNaN(element)) {
       count++
     }
   }
-    // too much numbers
-  if (count > (array.length / 2)+2) {
-    return -1
+  // too much numbers
+  if (count > array.length / 2 + 2) {
+    return false
   }
   if (count > 3) {
     return 2
@@ -50,13 +49,13 @@ export const hasNumber = (arg: string) => {
     return 1
   }
   //  no numbers
-  return -1
+  return false
 }
 export const checkBasicPattern = (arg: string) => {
   // ..
 }
 
-export const basicPasswordLength = (arg: string) => {
+export const basicPasswordLength = (arg: string): number | boolean => {
   if (convertToArray(arg).length > 6) {
     return 1
   } else if (convertToArray(arg).length > 8) {
@@ -64,5 +63,5 @@ export const basicPasswordLength = (arg: string) => {
   } else if (convertToArray(arg).length > 12) {
     return 3
   }
-  return -1
+  return false
 }

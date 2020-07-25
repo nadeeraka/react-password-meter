@@ -5,7 +5,9 @@ import {
   hasSpecialChar,
   validate,
   convertToArray,
-  basicPasswordLength
+  basicPasswordLength,
+  hasLowerCase,
+  hasUpperCase
 } from '../util'
 export class Main {
   input: string
@@ -58,6 +60,18 @@ export class Main {
     }
     return -1
   }
+  basic(arg: string): number {
+    if (validate(arg)) {
+      return -1
+    }
+    this.getPasswordLength(arg)
+    this.hasNumber(arg)
+    this.hasSpecialChar(arg)
+    hasUpperCase(arg)
+    hasLowerCase(arg)
+    return this.getScore()
+  }
+
   //  improve this method  
   advance(arg: string, email: string, name: string): number {
     this.basic(arg)
@@ -80,13 +94,5 @@ export class Main {
     return this.getScore()
   }
 
-  basic(arg: string): number {
-    if (validate(arg)) {
-      return -1
-    }
-    this.getPasswordLength(arg)
-    this.hasNumber(arg)
-    this.hasSpecialChar(arg)
-    return this.getScore()
-  }
+  
 }
