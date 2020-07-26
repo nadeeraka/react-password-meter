@@ -102,3 +102,4 @@ export class Main {
     return this.getScore()
   }
 }
+
