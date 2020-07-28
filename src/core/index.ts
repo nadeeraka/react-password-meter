@@ -1,7 +1,6 @@
 const commonChecks = require('fxa-common-password-list')
-import {errorsObj,strength} from '../util/const'
+import {errorsObj} from '../util/const'
 import {
-  checkBasicPattern,
   hasNumber,
   hasSpecialChar,
   validate,
@@ -19,9 +18,9 @@ export class Main {
     this.input = input
   }
 
-  private setInput(x: string): void {
-    this.input = x
-  }
+  // private setInput(x: string): void {
+  //   this.input = x
+  // }
 
   private setScore(plus: any): number {
     if (!isNaN(plus) && plus > 0) {
@@ -40,9 +39,9 @@ export class Main {
     this.errors.push(arg)
   }
 
-  private getError(): [] | [string] {
-    return this.errors
-  }
+  // private getError(): [] | [string] {
+  //   return this.errors
+  // }
 
   //  move to util
 
