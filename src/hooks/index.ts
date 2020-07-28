@@ -1,12 +1,12 @@
-import React,{useEffect,useState} from 'react'
+import {useEffect} from 'react'
 import {Main} from '../core'
-import {initialStateType} from '../interfaces'
+// import {initialStateType} from '../interfaces'
 
 export const useMeter = (str:string) => {
-    const init:initialStateType = {score:0,massage:'',error:''}
+    // const init:initialStateType = {score:0,massage:'',error:''}
     const ob = new Main()
 
-    const [state, setState] = useState(init)
+    // const [state, setState] = useState(init)
 
    const  getData =():number=>
    {
